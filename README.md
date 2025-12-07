@@ -39,13 +39,16 @@ If you need to access videos using http (rather than https) URLs, you will need 
 
 ## Packages Used
 
+- `cupertino_icons: ^1.0.8` - For iOS-style icons
 - `video_player: ^2.8.6` - For video playback functionality
 - `flutter_riverpod: ^2.5.1` - For state management
+- `flutter_lints: ^5.0.0` - For code linting (dev dependency)
 
 ## Project Structure
 
 ```
 lib/
+├── app.dart                     # App configuration and setup
 ├── main.dart                    # App entry point
 ├── models/
 │   └── video.dart               # Video model
@@ -53,23 +56,26 @@ lib/
 │   ├── theme_provider.dart      # Theme state management
 │   ├── video_provider.dart      # Video library state management
 │   └── video_player_provider.dart # Video player state management
+├── routes/
+│   └── routes.dart              # App routing configuration
 ├── screens/
 │   ├── splash_screen.dart       # Splash screen
 │   ├── video_library_screen.dart # Video library screen
 │   └── video_player_screen.dart # Video player screen
 ├── widgets/
 │   ├── app_background.dart      # App background widget
-│   └── custom_video_progress_indicator.dart # Custom seek bar
-└── test/
-    ├── video_provider_test.dart # Unit tests for video provider
-    └── widget_test.dart         # Widget tests
+│   ├── custom_video_progress_indicator.dart # Custom seek bar
+│   ├── video_library_widget.dart # Video library widget
+│   └── video_player_widget.dart # Video player widget
+test/
+├── video_provider_test.dart     # Unit tests for video provider
+└── widget_test.dart             # Widget tests
 ```
 
 ## Notes/Assumptions
 
 - The app uses dummy video URLs from Google's test video bucket for demonstration.
 - Orientation switching is handled automatically by Flutter's orientation detection.
-- Videos can be downloaded for offline playback using the download functionality.
 - The app supports both network and local video playback.
 - Custom video controls are implemented using Flutter's built-in widgets.
 - The app uses Material Design 3 for UI components.

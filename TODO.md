@@ -1,3 +1,4 @@
-- [x] Modify SplashScreen to use ConsumerStatefulWidget
-- [x] Update navigation to use named routing
-- [x] Add necessary imports for flutter_riverpod
+- [ ] Add toggleFullscreen() method in VideoPlayerNotifier
+- [ ] Add fullscreen toggle button in VideoPlayerWidget
+- [ ] Modify VideoPlayerScreen to conditionally use SafeArea
+- [ ] Import services package for SystemChrome

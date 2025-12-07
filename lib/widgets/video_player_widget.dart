@@ -37,9 +37,7 @@ class VideoPlayerWidget extends ConsumerWidget {
                     left: 0,
                     right: 0,
                     child: AppBar(
-                      backgroundColor: Theme.of(
-                        context,
-                      ).colorScheme.surface.withOpacity(0.8),
+                      backgroundColor: Colors.transparent,
                       title: Text(videoPlayerState.video?.title ?? 'Video'),
                       leading: IconButton(
                         icon: const Icon(Icons.arrow_back),
@@ -132,6 +130,19 @@ class VideoPlayerWidget extends ConsumerWidget {
                                   videoPlayerState.volume > 0
                                       ? Icons.volume_up
                                       : Icons.volume_off,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () => ref
+                                    .read(videoPlayerProvider.notifier)
+                                    .toggleFullscreen(),
+                                icon: Icon(
+                                  videoPlayerState.isFullscreen
+                                      ? Icons.fullscreen_exit
+                                      : Icons.fullscreen,
                                   color: Theme.of(
                                     context,
                                   ).colorScheme.onSurface,
