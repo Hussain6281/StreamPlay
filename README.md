@@ -33,6 +33,10 @@ A Flutter application that displays a video library and allows users to play vid
    flutter run
    ```
 
+### iOS Setup
+
+If you need to access videos using http (rather than https) URLs, you will need to add the appropriate NSAppTransportSecurity permissions to your app's Info.plist file, located in `<project root>/ios/Runner/Info.plist`. See Apple's documentation to determine the right combination of entries for your use case and supported iOS versions.
+
 ## Packages Used
 
 - `video_player: ^2.8.6` - For video playback functionality

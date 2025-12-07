@@ -1,3 +1,3 @@
-- [x] Update video_provider.dart to use local asset paths for thumbnailUrl
-- [x] Update VideoLibraryScreen to use Image.asset instead of CachedNetworkImage for thumbnails
-- [x] Remove CachedNetworkImage import from VideoLibraryScreen
+- [x] Modify SplashScreen to use ConsumerStatefulWidget
+- [x] Update navigation to use named routing
+- [x] Add necessary imports for flutter_riverpod
