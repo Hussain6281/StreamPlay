@@ -37,7 +37,9 @@ class VideoPlayerWidget extends ConsumerWidget {
                     left: 0,
                     right: 0,
                     child: AppBar(
-                      backgroundColor: Colors.black54,
+                      backgroundColor: Theme.of(
+                        context,
+                      ).colorScheme.surface.withOpacity(0.8),
                       title: Text(videoPlayerState.video?.title ?? 'Video'),
                       leading: IconButton(
                         icon: const Icon(Icons.arrow_back),
@@ -72,10 +74,16 @@ class VideoPlayerWidget extends ConsumerWidget {
                             controller: videoPlayerState.controller!,
                             video: video,
                             allowScrubbing: true,
-                            colors: const VideoProgressColors(
-                              playedColor: Colors.blue,
-                              bufferedColor: Colors.lightBlue,
-                              backgroundColor: Colors.grey,
+                            colors: VideoProgressColors(
+                              playedColor: Theme.of(
+                                context,
+                              ).colorScheme.primary,
+                              bufferedColor: Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.surfaceVariant,
                             ),
                           ),
                           Row(
@@ -85,9 +93,11 @@ class VideoPlayerWidget extends ConsumerWidget {
                                 onPressed: () => ref
                                     .read(videoPlayerProvider.notifier)
                                     .skipBackward(),
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.replay_10,
-                                  color: Colors.white,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
                                 ),
                               ),
                               IconButton(
@@ -98,16 +108,20 @@ class VideoPlayerWidget extends ConsumerWidget {
                                   videoPlayerState.isPlaying
                                       ? Icons.pause
                                       : Icons.play_arrow,
-                                  color: Colors.white,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
                                 ),
                               ),
                               IconButton(
                                 onPressed: () => ref
                                     .read(videoPlayerProvider.notifier)
                                     .skipForward(),
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.forward_10,
-                                  color: Colors.white,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
                                 ),
                               ),
                               IconButton(
@@ -118,7 +132,9 @@ class VideoPlayerWidget extends ConsumerWidget {
                                   videoPlayerState.volume > 0
                                       ? Icons.volume_up
                                       : Icons.volume_off,
-                                  color: Colors.white,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
                                 ),
                               ),
                             ],

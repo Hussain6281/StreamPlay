@@ -42,15 +42,17 @@ class VideoLibraryWidget extends ConsumerWidget {
                     errorBuilder: (context, error, stackTrace) => Container(
                       width: 120,
                       height: 80,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.broken_image),
+                      color: Theme.of(context).colorScheme.surfaceVariant,
+                      child: Icon(
+                        Icons.broken_image,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
                     ),
                   ),
                 ),
 
                 const SizedBox(width: 16),
 
-                // Title + duration
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +67,10 @@ class VideoLibraryWidget extends ConsumerWidget {
                       const SizedBox(height: 6),
                       Text(
                         "${video.duration.inMinutes}:${(video.duration.inSeconds % 60).toString().padLeft(2, '0')}",
-                        style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                       ),
                     ],
                   ),
