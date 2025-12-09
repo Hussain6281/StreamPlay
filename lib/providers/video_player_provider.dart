@@ -1,52 +1,9 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:streamplay/models/video_player.dart';
 import 'package:video_player/video_player.dart';
 import '../models/video.dart';
-
-class VideoPlayerState {
-  final VideoPlayerController? controller;
-  final Video? video;
-  final bool isInitialized;
-  final bool showControls;
-  final bool isFullscreen;
-  final bool isPlaying;
-  final double volume;
-  final double playbackSpeed;
-
-  VideoPlayerState({
-    this.controller,
-    this.video,
-    this.isInitialized = false,
-    this.showControls = true,
-    this.isFullscreen = false,
-    this.isPlaying = false,
-    this.volume = 1.0,
-    this.playbackSpeed = 1.0,
-  });
-
-  VideoPlayerState copyWith({
-    VideoPlayerController? controller,
-    Video? video,
-    bool? isInitialized,
-    bool? showControls,
-    bool? isFullscreen,
-    bool? isPlaying,
-    double? volume,
-    double? playbackSpeed,
-  }) {
-    return VideoPlayerState(
-      controller: controller ?? this.controller,
-      video: video ?? this.video,
-      isInitialized: isInitialized ?? this.isInitialized,
-      showControls: showControls ?? this.showControls,
-      isFullscreen: isFullscreen ?? this.isFullscreen,
-      isPlaying: isPlaying ?? this.isPlaying,
-      volume: volume ?? this.volume,
-      playbackSpeed: playbackSpeed ?? this.playbackSpeed,
-    );
-  }
-}
 
 class VideoPlayerNotifier extends StateNotifier<VideoPlayerState> {
   VideoPlayerNotifier() : super(VideoPlayerState());
@@ -108,12 +65,6 @@ class VideoPlayerNotifier extends StateNotifier<VideoPlayerState> {
 
   void toggleControls() {
     state = state.copyWith(showControls: !state.showControls);
-  }
-
-  void setPlaybackSpeed(double speed) {
-    if (state.controller == null) return;
-    state.controller!.setPlaybackSpeed(speed);
-    state = state.copyWith(playbackSpeed: speed);
   }
 
   void skipForward() {
